@@ -1,0 +1,117 @@
+# TCP
+
+## 三次握手原因
+
+- 阻止历史重复连接的初始化（主要原因）
+- 同步双方的初始序列号
+    - 接收方可以去除重复的数据；
+    - 接收方可以根据数据包的序列号按序接收；
+    - 可以标识发送出去的数据包中， 哪些是已经被对方收到的；
+- 避免资源浪费
+    - 连接请求阻塞后到达，服务端会建立多个冗余的无效链接，造成不必要的资源浪费
+
+
+
+![TCP 三次握手](https://tva1.sinaimg.cn/large/007S8ZIlly1gg3mktcf5rj30ml0iu75y.jpg)
+
+![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZeo9xBVAyPJ8iaWCC6sYS843HWajXhQQfx6CH4EUxLqib0AAOXolZfIvuoEDkDoXaQ3RIceibo8ia9MQQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+
+
+
+## 四次挥手
+
+**主动关闭连接的，才有 TIME_WAIT 状态。**
+
+![客户端主动关闭连接 —— TCP 四次挥手](https://tva1.sinaimg.cn/large/007S8ZIlly1gg3mk6olxpj30kx0m2jt4.jpg)
+
+## TIME_WAIT 等待的时间
+
+==2MSL==： 网络中可能存在来自发送方的数据包，当这些发送方的数据包被接收方处理后又会向对方发送响应，所以**一来一回需要等待 2 倍的时间**。
+
+原因：
+
+1. 防止旧连接的数据包
+2. 保证「被动关闭连接」的一方能被正确的关闭，即保证最后的 ACK 能让被动关闭方接收
+
+### time_wait状态码过多
+
+重用，快速回收，设置最大值
+
+```
+net.ipv4.tcp_syncookies = 1 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
+net.ipv4.tcp_tw_reuse = 1 表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；
+net.ipv4.tcp_tw_recycle = 1 表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭。
+net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
+```
+
+
+
+## close_wait
+
+被关闭一方在收尾阶段时，socket 不能执行 close( )，不能发送 FIN 
+
+1. 程序问题：旧的请求使用数据库线程池，但是没有及时释放连接
+2. 新的客户端等待时间长，主动发起关闭
+3. 客户端响应这个关闭请求，但是服务端请求处理的线程还在阻塞，无法下一步发送 FIN
+
+
+
+
+
+## TCP保证可靠性
+
+1. 应用数据被分割成 TCP 认为最适合发送的数据块。
+
+2. TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。
+
+3. **校验和：** TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。
+
+4. TCP 的接收端会丢弃重复的数据。
+
+5. **流量控制：** TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （TCP 利用滑动窗口实现流量控制）
+
+6. **拥塞控制：** 当网络拥塞时，减少数据的发送。
+
+    慢开始 : 小到大逐渐增加拥塞窗口的大小 ( 加倍 )
+
+    避免拥塞 ：拥塞窗口按线性规律缓慢增长 （先指数增长（16），再线性增长，遇到拥塞时归1，并调整指数上限）
+
+    快重传 ： 收到三个重复确认就应当立即重传对方尚未收到的报文段，不等计时器
+
+    快恢复：当发送方连续收到三个重复确认时，将拥塞窗口设为较小的指数上限值，然后开始线性增长
+
+7. **ARQ协议（停止等待）：** 也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组。
+
+8. **超时重传：** 当 TCP 发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。
+
+
+
+## 输入URL之后
+
+
+### 发起HTTP请求
+
+1.  `URL` 进行解析，确定了 Web 服务器和文件名，根据这些信息来生成 HTTP 请求消息
+
+### 查询DNS
+
+2. 根据URL，向各级DNS服务器请求IP地址
+
+### 建立连接
+
+3. 三次握手
+4. TCP分割数据包
+5. 添加TCP头部，生成TCP报文
+    ![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvTzcpo31hh6dibOX6PEGUYrK5sHeMv4YS0D9UjTRZyIDRE0IfbjJSdaA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+6. 添加IP头部，生成IP报文
+    ![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvObeicZLtRqF6wjeAR2vYP1eAh7WRXmcS3vlwMzmzswyqtWrJyiaZ57xg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+7. 生成MAC头部：包括发送方、接收方MAC地址和使用的IP协议 (**MAC地址会变**)
+8. 网卡 ->  交换机 -> 路由器 
+9. 接受消息， 返回报文
+10. 4次挥手
+
+### 浏览器得到数据， 渲染页面
+
+
+
+![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvv55hSUSrw3kicf3mvfwRtibaqWnRBgtxDoXBklA4kokSqEfhMzicEe1lA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
