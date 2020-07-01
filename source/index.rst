@@ -49,6 +49,7 @@ Welcome to Notes!
    数据库/二阶段提交
    数据库/Mysql_log
    数据库/索引
+   数据库/innoDB储存
    数据库/主从复制
 
 
@@ -60,10 +61,18 @@ Welcome to Notes!
    :caption: JAVA
 
    JAVA/拷贝
+   JAVA/四种引用
    JAVA/ArrayList
    JAVA/HashMap
    JAVA/ConcurrentHashMap
 
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :caption: JVM
+
+   JVM/常见溢出
 
 
 
@@ -105,12 +114,17 @@ Welcome to Notes!
    :titlesonly:
    :caption: 分布式
 
-   分布式/TCC
+   分布式/CAP
+   分布式/BASE
+   分布式/RAFT
+   分布式/Paxos
    分布式/两阶段提交
+   分布式/TCC
    分布式/分布式锁
    分布式/RPC
    分布式/消息队列
    分布式/消息队列问题
+   分布式/分布式ID
 
 
 
