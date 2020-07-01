@@ -90,6 +90,7 @@ Welcome to Notes!
    redis/持久化
    redis/redis基础
    redis/redis高可用
+   redis/过期策略
    redis/跳跃表
    redis/布隆过滤器
    redis/缓存一致性
@@ -108,6 +109,8 @@ Welcome to Notes!
    分布式/两阶段提交
    分布式/分布式锁
    分布式/RPC
+   分布式/消息队列
+   分布式/消息队列问题
 
 
 
