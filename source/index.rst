@@ -33,6 +33,7 @@ Welcome to Notes!
    网络/HTTP
    网络/TCP
    网络/负载均衡
+   网络/Nginx
    网络/PING与ICMP
 
 
@@ -74,6 +75,16 @@ Welcome to Notes!
 
    JVM/常见溢出
 
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :caption: 设计模式
+
+   设计模式/概述
+   设计模式/单例模式
+   设计模式/建造者模式
+   设计模式/原型模式
 
 
 .. toctree::
