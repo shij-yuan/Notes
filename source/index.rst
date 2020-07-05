@@ -62,6 +62,7 @@ Welcome to Notes!
    :titlesonly:
    :caption: JAVA
 
+   JAVA/静态与动态绑定
    JAVA/拷贝
    JAVA/四种引用
    JAVA/ArrayList
@@ -131,6 +132,7 @@ Welcome to Notes!
    分布式/RAFT
    分布式/Paxos
    分布式/两阶段提交
+   分布式/三阶段提交
    分布式/TCC
    分布式/分布式锁
    分布式/RPC
