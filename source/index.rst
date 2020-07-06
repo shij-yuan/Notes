@@ -54,6 +54,7 @@ Welcome to Notes!
    数据库/索引
    数据库/innoDB储存
    数据库/主从复制
+   数据库/Mybatis
 
 
 
@@ -103,6 +104,12 @@ Welcome to Notes!
    多线程/线程池
 
 
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :caption: Spring
+
+   Spring/Bean
 
 
 .. toctree::
@@ -110,6 +117,7 @@ Welcome to Notes!
    :titlesonly:
    :caption: Redis
 
+   redis/redis线程模型
    redis/持久化
    redis/redis基础
    redis/redis高可用

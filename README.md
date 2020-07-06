@@ -4,5 +4,5 @@
 
 Notes about computer science and JAVA language.
 
-Click [here](https://reviewnotes.readthedocs.io/zh_CN/latest/) to read the docs.
+[Click here](https://reviewnotes.readthedocs.io/zh_CN/latest/) to read the docs.
 
