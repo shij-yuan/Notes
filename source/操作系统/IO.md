@@ -2,7 +2,7 @@
 
 ### 阻塞IO
 
-![](https://user-gold-cdn.xitu.io/2018/10/30/166c5502f8bcffc9?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044720.png)
 
 
 
@@ -36,11 +36,11 @@
 
 ### 异步IO
 
-![](https://user-gold-cdn.xitu.io/2018/10/30/166c56cf32b82d81?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044726.png)
 
 
 
-![](https://user-gold-cdn.xitu.io/2018/10/30/166c578ad18a1d40?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044733.png)
 
 
 
@@ -48,11 +48,11 @@
 
 ### IO中断
 
-![](https://user-gold-cdn.xitu.io/2019/9/20/16d4e944a3e7e459?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044740.png)
 
 ### DMA
 
-![](https://user-gold-cdn.xitu.io/2019/9/20/16d4e94da80fb4e3?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044745.png)
 
 
 

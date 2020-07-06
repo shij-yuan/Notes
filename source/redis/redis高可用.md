@@ -16,7 +16,7 @@ RDB & AOF
 
 缺陷是 **写操作** 无法 **负载均衡**，**存储能力** 受到 **单机** 的限制。
 
-![](https://user-gold-cdn.xitu.io/2018/8/22/16560ce61dbc4eeb?imageView2/0/w/1280/h/960/ignore-error/1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-045221.png)
 
 
 

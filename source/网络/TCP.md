@@ -14,7 +14,7 @@
 
 ![TCP 三次握手](https://tva1.sinaimg.cn/large/007S8ZIlly1gg3mktcf5rj30ml0iu75y.jpg)
 
-![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZeo9xBVAyPJ8iaWCC6sYS843HWajXhQQfx6CH4EUxLqib0AAOXolZfIvuoEDkDoXaQ3RIceibo8ia9MQQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044417.png)
 
 
 
@@ -26,7 +26,7 @@
 
 ## TIME_WAIT 等待的时间
 
-==2MSL==： 网络中可能存在来自发送方的数据包，当这些发送方的数据包被接收方处理后又会向对方发送响应，所以**一来一回需要等待 2 倍的时间**。
+2MSL： 网络中可能存在来自发送方的数据包，当这些发送方的数据包被接收方处理后又会向对方发送响应，所以**一来一回需要等待 2 倍的时间**。
 
 原因：
 
@@ -102,9 +102,9 @@ net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
 3. 三次握手
 4. TCP分割数据包
 5. 添加TCP头部，生成TCP报文
-    ![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvTzcpo31hh6dibOX6PEGUYrK5sHeMv4YS0D9UjTRZyIDRE0IfbjJSdaA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    ![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044458.jpg)
 6. 添加IP头部，生成IP报文
-    ![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvObeicZLtRqF6wjeAR2vYP1eAh7WRXmcS3vlwMzmzswyqtWrJyiaZ57xg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    ![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044503.jpg)
 7. 生成MAC头部：包括发送方、接收方MAC地址和使用的IP协议 (**MAC地址会变**)
 8. 网卡 ->  交换机 -> 路由器 
 9. 接受消息， 返回报文
@@ -114,4 +114,4 @@ net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
 
 
 
-![](https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZdCwxNydn5YuT0s7aLuqWCvv55hSUSrw3kicf3mvfwRtibaqWnRBgtxDoXBklA4kokSqEfhMzicEe1lA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044523.jpg)

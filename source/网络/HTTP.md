@@ -44,10 +44,13 @@
 
 ## 字段
 
-1. *Host* : 客户端发送请求时，用来指定服务器的域名。
-2. *Content-Length 字段* : 服务器在返回数据时，会有 `Content-Length` 字段，表明本次回应的数据长度。
-3. *Connection 字段* : `Connection` 字段最常用于客户端要求服务器使用 TCP 持久连接，以便其他请求复用。
-4. *Content-Type 字段* : `Content-Type` 字段用于服务器回应时，告诉客户端，本次数据是什么格式。
+1. Host : 客户端发送请求时，用来指定服务器的域名。
+2. Content-Length : 服务器在返回数据时，会有 `Content-Length` 字段，表明本次回应的数据长度。
+3. Connection  ：最常用于客户端要求服务器使用 TCP 持久连接，以便其他请求复用。
+4. Content-Type  ：用于服务器回应时，告诉客户端，本次数据是什么格式。
+5. Last-Modified：资源的最后修改日期时间
+6. Accept：可处理的媒体类型
+7. User-Agent：HTTP 客户端程序的信息
 
 
 
@@ -83,7 +86,7 @@
 5. 服务端使用自己的私钥解密，得到对称密钥
 6. 开始通信
 
-![](https://user-gold-cdn.xitu.io/2019/4/22/16a45839ceacbb52?imageslim)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044235.png)
 
 
 
@@ -126,7 +129,7 @@ HTTP 1.x在应用层以纯文本的形式进行通信，而HTTP 2.0将所有的�
 
 HTTP 2.0建立一条TCP连接后，并行传输着3个数据流，客户端向服务端乱序发送stream1~3的一系列的DATA帧，与此同时，服务端已经在返回stream 1的DATA帧 
 
-![](https://img-blog.csdn.net/20170406101019438?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemh1eWlxdWFu/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044318.jpg)
 
 *头部压缩* ： HTTP/2 会**压缩头**（Header）如果你同时发出多个请求，他们的头是一样的或是相似的，那么，协议会帮你**消除重复的分**。
 
