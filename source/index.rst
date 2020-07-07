@@ -97,10 +97,14 @@ Welcome to Notes!
    :caption: 多线程
 
    多线程/JMM
+   多线程/volatile
+   多线程/双重检测锁
+   多线程/ThreadLocal
    多线程/CAS
    多线程/AQS
    多线程/synchronized
-   多线程/单例双重检测
+   多线程/ReentrantLock
+   多线程/synchronized与reentrantLock
    多线程/线程池
 
 
