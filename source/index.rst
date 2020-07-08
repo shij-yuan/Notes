@@ -77,6 +77,19 @@ Welcome to Notes!
    :titlesonly:
    :caption: JVM
 
+   JVM/运行时数据区
+   JVM/堆
+   JVM/方法区
+   JVM/对象实例化
+   JVM/StringTable
+   JVM/垃圾回收器概述
+   JVM/垃圾回收器
+   JVM/G1垃圾回收器
+   JVM/GC算法
+   JVM/GC日志分析
+   JVM/引用类型与内存泄露
+   JVM/双亲委派机制
+   JVM/Tomcat不遵守双亲委派机制
    JVM/常见溢出
 
 
@@ -98,7 +111,7 @@ Welcome to Notes!
 
    多线程/JMM
    多线程/volatile
-   多线程/双重检测锁
+   多线程/单例双重检测
    多线程/ThreadLocal
    多线程/CAS
    多线程/AQS
