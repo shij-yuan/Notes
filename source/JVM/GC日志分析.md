@@ -1,4 +1,4 @@
-# 日志分析
+# GC日志分析
 
 打开 GC 日志
 
@@ -26,7 +26,7 @@
 
 JDK 7 ：触发GC 
 
-![](/Users/shijyuan/Library/Application Support/typora-user-images/image-20200519164354584.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjltfoydcj31by0l2qbv.jpg)
 
 JDK 8 : **4MB直接进入老年代**
 

@@ -14,4 +14,4 @@
 
 ## Tomcat 的双亲委派机制
 
-![](https://upload-images.jianshu.io/upload_images/4236553-89bacc3467d513f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjlu4c9lyj30cu0i73yn.jpg)

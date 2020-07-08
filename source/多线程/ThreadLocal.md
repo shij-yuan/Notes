@@ -6,7 +6,7 @@ ThreadLocal类是修饰变量的，重点是在控制变量的作用域，在多
 
 ## 结构
 
-![](https://upload-images.jianshu.io/upload_images/7432604-ad2ff581127ba8cc.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/806)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjlx8h1xej30me0n9402.jpg)
 
 - 每个Thread线程内部都有一个Map。
 

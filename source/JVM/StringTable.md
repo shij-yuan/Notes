@@ -1,4 +1,4 @@
-# String 细节
+# String 的细节
 
 JDK 8 以前内部定义了 `final char[] value`储存字符数据
 

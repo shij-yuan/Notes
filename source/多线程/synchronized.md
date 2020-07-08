@@ -54,4 +54,4 @@ JVM在JIT编译时(可以简单理解为当某段代码即将第一次被执行�
 
 synchronized 使用的锁对象是存储在 Java 对象头里
 
-![](https://img-blog.csdn.net/20170603172215966?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjly2shlsj30iy0913zk.jpg)
