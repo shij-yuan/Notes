@@ -44,15 +44,16 @@ Welcome to Notes!
    :titlesonly:
    :caption: 数据库
 
-   数据库/Mysql_order_by
+   数据库/Mysql_log
    数据库/ACID
+   数据库/MVCC
    数据库/事务隔离级别
    数据库/Mysql_锁
    数据库/二阶段提交
    数据库/三阶段提交
-   数据库/Mysql_log
    数据库/索引
    数据库/innoDB储存
+   数据库/Mysql_order_by
    数据库/主从复制
    数据库/Mybatis
 
@@ -64,6 +65,8 @@ Welcome to Notes!
    :titlesonly:
    :caption: JAVA
 
+   JAVA/JAVA基础
+   JAVA/集合
    JAVA/静态与动态绑定
    JAVA/拷贝
    JAVA/四种引用

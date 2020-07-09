@@ -10,6 +10,19 @@ Cookie是客户端保存用户信息的一种机制，用来记录用户的一�
 
 服务器使用session把用户的信息临时保存在了服务器上。
 
+```java
+session.setAttribute(AuthConstant.LOGIN_USER, data);
+```
+
+### 取出信息
+
+```java
+HttpSession session = request.getSession();
+MemberRespVo member = (MemberRespVo) session.getAttribute(AuthConstant.LOGIN_USER);
+```
+
+
+
 ## 流程
 
 1. 客户端会发送一个http请求到服务器端
