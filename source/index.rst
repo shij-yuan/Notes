@@ -142,6 +142,7 @@ Welcome to Notes!
    redis/redis基础
    redis/redis高可用
    redis/过期策略
+   redis/分布式锁
    redis/跳跃表
    redis/布隆过滤器
    redis/缓存一致性
