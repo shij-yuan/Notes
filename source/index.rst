@@ -17,7 +17,6 @@ Welcome to Notes!
    操作系统/epoll
    操作系统/共享内存
    操作系统/内存
-   操作系统/socket
    操作系统/JAVA IO
    操作系统/JAVA线程模型
    操作系统/Linux命令
@@ -32,6 +31,7 @@ Welcome to Notes!
 
    网络/HTTP
    网络/TCP
+   网络/网络编程
    网络/负载均衡
    网络/Nginx
    网络/PING与ICMP
@@ -55,6 +55,7 @@ Welcome to Notes!
    数据库/innoDB储存
    数据库/Mysql_order_by
    数据库/主从复制
+   数据库/优化
    数据库/Mybatis
 
 
