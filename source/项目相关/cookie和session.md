@@ -4,11 +4,11 @@
 
 ## cookie
 
-Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，实际上Cookie是服务器在**本地机器**上存储的一小段文本，（该头部包含了sessionId）并随着每次请求发送到服务器。
+Cookie是客户端保存用户信息的一种机制，服务器使用 response 向客户端浏览器颁发一个Cookie。Cookie是服务器在**本地机器**上存储的一小段文本，（该头部包含了sessionId）并随着每次请求发送到服务器。
 
 ## session
 
-服务器使用session把用户的信息临时保存在了服务器上。
+session是依赖Cookie实现的。服务器使用session把用户的信息临时保存在了服务器上。服务器根据 sessionid 获取出会话中存储的信息，然后确定会话的身份信息。
 
 ```java
 session.setAttribute(AuthConstant.LOGIN_USER, data);
