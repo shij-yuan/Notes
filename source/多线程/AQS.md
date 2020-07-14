@@ -56,7 +56,7 @@ tryReleaseShared(int)//共享方式。尝试释放资源，成功则返回true�
 
 
 
-## ConditionObject
+# ConditionObject
 
 AQS中的ConditionObject内部类实现了Condition接口，配合锁对象使用实现等待、通知。
 
