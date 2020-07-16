@@ -6,11 +6,27 @@
 
 Cookie是客户端保存用户信息的一种机制，服务器使用 response 向客户端浏览器颁发一个Cookie。Cookie是服务器在**本地机器**上存储的一小段文本，（该头部包含了sessionId）并随着每次请求发送到服务器。
 
+```java
+@Override
+public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    UserInfoTo userInfoTo = threadLocal.get();
+    if(!userInfoTo.isTempUser()){
+        Cookie cookie = new Cookie(CartConstant.TEMP_USER_COOKIE_NAME, userInfoTo.getUserKey());
+        cookie.setDomain("emall.com");
+        cookie.setMaxAge(CartConstant.TEMP_USER_COOKIE_TIMEOUT);
+        response.addCookie(cookie);
+    }
+}
+```
+
+
+
 ## session
 
 session是依赖Cookie实现的。服务器使用session把用户的信息临时保存在了服务器上。服务器根据 sessionid 获取出会话中存储的信息，然后确定会话的身份信息。
 
 ```java
+MemberRespVo data;
 session.setAttribute(AuthConstant.LOGIN_USER, data);
 ```
 
