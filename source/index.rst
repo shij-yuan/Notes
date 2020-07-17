@@ -82,6 +82,7 @@ Welcome to Notes!
    :titlesonly:
    :caption: JVM
 
+   JVM/类加载机制
    JVM/运行时数据区
    JVM/堆
    JVM/方法区
@@ -123,6 +124,7 @@ Welcome to Notes!
    多线程/synchronized
    多线程/ReentrantLock
    多线程/synchronized与reentrantLock
+   多线程/线程
    多线程/线程池
 
 

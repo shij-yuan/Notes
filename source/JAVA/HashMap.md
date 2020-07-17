@@ -4,7 +4,7 @@ HashMap 初始容量是16，负载因子为 0.75
 
 ## 查找
 
-1. (n - 1) & hash 计算出桶的位置
+1. index = (lenght - 1) & hash 计算出桶的位置
 
     ```java
     static final int hash(Object key) {
@@ -52,10 +52,17 @@ HashMap 初始容量是16，负载因子为 0.75
 
 ## 其他
 
-桶数组 table 被申明为 transient，不会被默认的序列化机制序列化
+- 桶数组 table 被申明为 transient，不会被默认的序列化机制序列化
 
-1. table 多数情况下是无法被存满的，序列化未使用的部分，浪费空间
-2. 同一个键值对在不同 JVM 下，所处的桶位置可能是不同的，在不同的 JVM 下反序列化 table 可能会发生错误。
+    1. table 多数情况下是无法被存满的，序列化未使用的部分，浪费空间
+    2. 同一个键值对在不同 JVM 下，所处的桶位置可能是不同的，在不同的 JVM 下反序列化 table 可能会发生错误。
+
+- 容量为2的幂
+
+    `h & (length - 1) == h % length`
+
+    - 使用位运算更快
+    - Length - 1的值的二进制所有的位均为1，Index的结果等于hashCode的最后几位。只要输入的hashCode本身符合均匀分布，Hash算法的结果就是均匀的。
 
 
 
