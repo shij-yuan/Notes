@@ -70,6 +70,8 @@ Welcome to Notes!
    JAVA/JAVA基础
    JAVA/集合
    JAVA/静态与动态绑定
+   JAVA/动态代理
+   JAVA/反射
    JAVA/拷贝
    JAVA/四种引用
    JAVA/ArrayList

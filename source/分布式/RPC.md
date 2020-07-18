@@ -31,6 +31,26 @@ RPC（Remote Procedure Call）—远程过程调用，它是一种通过网络�
 
 Feign通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的 Request 请求。通过Feign以及JAVA的动态代理机制，可以不用通过HTTP框架去封装HTTP请求报文的方式，完成远程服务的HTTP调用。
 
+###  流程
+
+1. 基于面向接口的动态代理方式生成实现类
+
+    - 将目标服务方法作为接口。
+
+    - 代理类加入了配置类信息、接口类型、目标服务名称、url地址
+
+2. 根据接口类的注解声明规则，解析出底层 Methodhandler
+
+3. 基于 RequestBean，动态生成 Request
+
+4. Encoder将Bean包装成 Http 报文请求
+
+5. 拦截器对请求和响应进行装饰处理
+
+6. 日志记录
+
+7. 基于 HTTP 发送请求
+
 ![](https://upload-images.jianshu.io/upload_images/19816137-512fc8f62746eac7?imageMogr2/auto-orient/strip|imageView2/2/w/756)
 
 
