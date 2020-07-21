@@ -136,6 +136,7 @@ Welcome to Notes!
    :caption: Spring
 
    Spring/Bean
+   Spring/tiny-spring
 
 
 .. toctree::
