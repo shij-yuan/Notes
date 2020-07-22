@@ -38,8 +38,24 @@ Spring IoC容器中只会存在一个**共享的 bean 实例**，并且所有对
 
 ## 依赖
 
-如果某个 bean 对象依赖另一个 bean 对象，此时就不能直接设置了。Spring 容器首先要先去实例化 bean 依赖的对象，实例化好后才能设置到当前 bean 中。
+Spring 单例对象：对象实例化 -> 对象属性填充 -> 对象初始化
 
 ### 循环依赖
 
-- 如果依赖靠**构造器方式注入**，则无法处理，Spring 直接会报循环依赖异常。
+**构造器注入**和**prototype**类型的属性注入都会初始化Bean失败。**单例**的属性注入可以成功。
+
+#### 缓存
+
+- 一级缓存：保存所有的 singletonBean 的实例
+- 二级缓存：保存所有早期创建的Bean对象，这个Bean还没有完成依赖注入
+- 三级缓存：singletonBean的生产工厂
+
+getSingleton()过程：Spring首先从一级缓存singletonObjects中获取。如果获取不到，并且对象正在创建中，就再从二级缓存earlySingletonObjects中获取。如果还是获取不到且允许singletonFactories通过getObject()获取，就从三级缓存singletonFactory.getObject() 获取，如果获取到了则从三级缓存移动到二级缓存。
+
+### 解决
+
+1. A首先完成了初始化的第一步，并且将自己提前曝光到singletonFactories中
+2. A发现自己依赖对象B，此时就尝试去get(B)，发现B还没有被创建，所以走 create B 流程
+3. B在初始化第一步的时候发现自己依赖了对象A，于是尝试get(A)，尝试一级缓存singletonObjects(没有，A还没初始化完全)，尝试二级缓存earlySingletonObjects（没有），尝试三级缓存singletonFactories，由于A通过ObjectFactory将自己提前曝光了，所以B能够通过ObjectFactory.getObject 拿到A对象，B拿到A对象后顺利完成了初始化阶段，完全初始化之后将自己放入到一级缓存singletonObjects中。
+4. A此时能拿到B的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects 中
+5. B 获得 A 的引用，也完成初始化
