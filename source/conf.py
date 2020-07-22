@@ -41,7 +41,10 @@ release = '0.1'
 import sphinx_rtd_theme
 
 extensions = [
-    "sphinx_rtd_theme"
+    "sphinx_rtd_theme",
+    "recommonmark",
+    "sphinx_markdown_tables",
+    "sphinx.ext.autosectionlabel"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -55,6 +58,7 @@ from recommonmark.parser import CommonMarkParser
 source_parsers = {
     '.md': CommonMarkParser,
 }
+
 source_suffix = ['.rst', '.md']
 
 # The master toctree document.
