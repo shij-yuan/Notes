@@ -48,7 +48,7 @@ Welcome to Notes!
    数据库/Mysql_log
    数据库/ACID
    数据库/MVCC
-   数据库/事务隔离级别
+   数据库/事务
    数据库/Mysql_锁
    数据库/二阶段提交
    数据库/三阶段提交
@@ -137,6 +137,9 @@ Welcome to Notes!
 
    Spring/Bean
    Spring/tiny-spring
+   Spring/注解
+   Spring/事务传播行为
+   Spring/SpringBoot
 
 
 .. toctree::
@@ -183,9 +186,11 @@ Welcome to Notes!
    :caption: 项目相关
 
    项目相关/cookie和session
+   项目相关/分布式锁
    项目相关/OAuth2
    项目相关/Feign
    项目相关/线程池
+   项目相关/CompletableFuture
    项目相关/分布式事务
    项目相关/幂等性
    项目相关/令牌验证
