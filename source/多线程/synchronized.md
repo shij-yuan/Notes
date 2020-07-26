@@ -52,6 +52,8 @@ JVM在JIT编译时(可以简单理解为当某段代码即将第一次被执行�
 
 ## JAVA对象头
 
-synchronized 使用的锁对象是存储在 Java 对象头里
+synchronized 使用的锁对象是存储在 Java 对象头里。
+
+在线程执行同步代码块之前，JVM会现在当前线程的**栈桢**中创建用于存储锁记录的空间，并将锁对象头中的 MarkWord 信息复制到锁记录中（ Displaced Mard Word）。然后线程尝试使用 CAS 将对象头中的 **MarkWord 替换为指向锁记录的指针**。
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjly2shlsj30iy0913zk.jpg)
