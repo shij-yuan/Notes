@@ -16,7 +16,7 @@ Welcome to Notes!
    操作系统/文件描述符
    操作系统/epoll
    操作系统/共享内存
-   操作系统/内存
+   操作系统/虚拟内存
    操作系统/JAVA IO
    操作系统/JAVA线程模型
    操作系统/Linux命令

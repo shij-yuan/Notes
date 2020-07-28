@@ -57,3 +57,56 @@ synchronized 使用的锁对象是存储在 Java 对象头里。
 在线程执行同步代码块之前，JVM会现在当前线程的**栈桢**中创建用于存储锁记录的空间，并将锁对象头中的 MarkWord 信息复制到锁记录中（ Displaced Mard Word）。然后线程尝试使用 CAS 将对象头中的 **MarkWord 替换为指向锁记录的指针**。
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggjly2shlsj30iy0913zk.jpg)
+
+
+
+## monitor
+
+synchronized 通过 monitorenter  和  monitorexit 实现。
+
+### monitor竞争
+
+1. 通过CAS尝试把monitor的`_owner`字段设置为当前线程
+2. 如果设置之前的`_owner`指向当前线程，说明当前线程再次进入monitor，即重入锁，执行`_recursions ++` ，记录重入的次数
+3. 若之前`_owner`指向的BasicLock在当前线程栈上，说明当前线程是第一次进入该monitor，设置`_recursions`为1，`_owner`为当前线程，该线程成功获得锁并返回
+4. 如果获取锁失败，则等待锁的释放
+
+### monitor等待
+
+1. 当前线程被封装成ObjectWaiter对象node
+2. 在循环中，通过CAS把node节点添加到链表
+3. 通过自旋尝试获取锁，如果还是没有获取到锁，则通过park将当前线程挂起，等待被唤醒
+
+
+
+# ObjectMonitor
+
+进入wait/notify方法之前，要获取synchronized锁。
+
+ObjectMonitor对象中有两个队列：`_WaitSet` 和 `_EntryList`，用来保存ObjectWaiter对象列表；`_owner`指向获得ObjectMonitor对象的线程。
+
+- _WaitSet  ：处于wait状态的线程
+- _EntryList：处于等待锁block状态的线程
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gh6rl1e4okj30et08vt97.jpg)
+
+### object.wait()
+
+1. 将当前线程封装成ObjectWaiter对象node
+2. 将node添加到_WaitSet列表
+3. 释放当前的ObjectMonitor对象，这样其它竞争线程就可以获取该ObjectMonitor对象
+4. 最后底层的park方法会挂起线程
+
+### object.notify()
+
+1. 如果当前_WaitSet为空，即没有正在等待的线程，则直接返回
+2. 获取_WaitSet列表中的第一个ObjectWaiter节点
+3. 根据不同的策略，将取出来的ObjectWaiter节点，加入到_EntryList或自旋
+
+## 流程
+
+1. 多个线程monitorenter时，只有一个可以获取lock对象关联的monitor，和monitor建立关联。
+2. 获取失败的线程加锁失败，进入等待队列。
+3. 获得monitor的线程执行wai时，将当前线程放入wait set，等待被唤醒，并放弃lock对象上的所有同步声明。
+4. notify方法会选择wait set中任意一个线程唤醒，notifyAll方法会唤醒monitor的wait set中所有线程。
+5. 
