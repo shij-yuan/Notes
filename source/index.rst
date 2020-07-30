@@ -99,6 +99,7 @@ Welcome to Notes!
    JVM/双亲委派机制
    JVM/Tomcat不遵守双亲委派机制
    JVM/常见溢出
+   JVM/问题排查
 
 
 .. toctree::
