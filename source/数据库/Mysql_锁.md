@@ -50,3 +50,74 @@
 - 即加锁读，读取记录的最新版本，会加锁保证其他并发事务不能修改当前记录，直至获取锁的事务释放锁；
 
 - 在当前读读情况下，mysql通过next-key来避免幻读。
+
+
+
+## 例子
+
+```sql
+select * from table where id = ?
+select * from table where id < ?
+select * from table where id = ? lock in share mode
+select * from table where id < ? lock in share mode
+select * from table where id = ? for update
+select * from table where id < ? for update
+```
+
+需要根据事务隔离级别、索引类型进行判断。
+
+### RC/RU 隔离级别 + 条件非索引  ||  RC/RU 隔离级别 + （非）聚簇索引
+
+```sql
+(1)select * from table where num = 200
+不加任何锁，是快照读。
+
+(2)select * from table where num > 200
+不加任何锁，是快照读。
+
+(3)select * from table where num = 200 lock in share mode
+当num = 200，有两条记录。这两条记录对应的pId=2，7，因此在pId=2，7的聚簇索引上加行级S锁，采用当前读。
+(非聚簇索引时，两个索引都加上锁)
+
+(4)select * from table where num > 200 lock in share mode
+当num > 200，有一条记录。这条记录对应的pId=3，因此在pId=3的聚簇索引上加上行级S锁，采用当前读。
+
+(5)select * from table where num = 200 for update
+当num = 200，有两条记录。这两条记录对应的pId=2，7，因此在pId=2，7的聚簇索引上加行级X锁，采用当前读。
+
+(6)select * from table where num > 200 for update
+当num > 200，有一条记录。这条记录对应的pId=3，因此在pId=3的聚簇索引上加上行级X锁，采用当前读。
+```
+
+
+
+### RR/Serializable 隔离级别 + 非索引
+
+```sql
+(1)select * from table where num =(或>) 200
+在RR级别下，不加任何锁，是快照读。
+在Serializable级别下，在pId = 1,2,3,7（全表所有记录）的聚簇索引上加S锁。
+并且在聚簇索引的所有间隙(-∞,1)(1,2)(2,3)(3,7)(7,+∞)加gap lock
+
+(2)select * from table where num =(或>) 200 lock in share mode
+在pId = 1,2,3,7（全表所有记录）的聚簇索引上加S锁。
+并且在聚簇索引的所有间隙(-∞,1)(1,2)(2,3)(3,7)(7,+∞)加gap lock
+
+(3)select * from table where num =(或>) 200 for update
+在pId = 1,2,3,7（全表所有记录）的聚簇索引上加X锁。
+并且在聚簇索引的所有间隙(-∞,1)(1,2)(2,3)(3,7)(7,+∞)加gap lock
+```
+
+### RR/Serializable 隔离级别 + 聚簇索引
+
+如果`where`后的条件为精确查询(`=`的情况)，那么只存在record lock。如果为范围查询(`>`或`<`的情况)，那么存在的是record lock + gap lock。
+
+### RR/Serializable 隔离级别 + 非聚簇索引
+
+#### 唯一索引
+
+与聚簇索引类似，两个索引都加锁。
+
+#### 普通索引
+
+通过索引进行精确查询以后，不仅存在 record lock，还存在 gap lock。

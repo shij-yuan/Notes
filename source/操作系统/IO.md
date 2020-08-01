@@ -87,12 +87,13 @@
 #### 用户态直接I/O
 
 - 用户态直接 I/O 使得应用进程或运行在用户态（user space）下的库函数直接访问硬件设备，数据直接跨过内核进行传输
+- 能适用于不需要内核缓冲区处理的应用程序。CPU与磁盘操作执行时间差距大，需要配合异步。
 
 #### mmap + write
 
 - 一种零拷贝方式是使用 mmap + write 代替原来的 read + write 方式，减少了 1 次 CPU 拷贝操作。4 次上下文切换，1 次 CPU 拷贝和 2 次 DMA 拷贝。
-
 - 使用 mmap 的目的是将内核中读缓冲区（read buffer）的地址与用户空间的缓冲区（user buffer）进行映射，从而实现内核缓冲区与应用程序内存的共享，省去了将数据从内核读缓冲区（read buffer）拷贝到用户缓冲区（user buffer）的过程，然而内核读缓冲区（read buffer）仍需将数据到内核写缓冲区（socket buffer）
+- 不适合小文件，内存映射总是要对齐页边界。
 
 #### sendfile
 
@@ -101,3 +102,17 @@
 - 数据可以直接在内核空间内部进行 I/O 传输，从而省去了数据在用户空间和内核空间之间的来回拷贝。与 mmap 内存映射方式不同的是， sendfile 调用中 I/O 数据对用户空间是完全不可见的。
 
 - 用户程序不能对数据进行修改
+
+#### sendfile + DMA gather copy
+
+- 2 次上下文切换、0 次 CPU 拷贝以及 2 次 DMA 拷贝
+- 不再从内核缓冲区的数据拷贝到 socket 缓冲区，仅仅是缓冲区文件描述符和数据长度的拷贝，这样 DMA 直接利用 gather 操作将页缓存中数据打包发送到网络中
+
+
+
+## JAVA NIO中的零拷贝
+
+Java NIO 中的通道（Channel）就相当于操作系统的内核空间（kernel space）的缓冲区，而缓冲区（Buffer）对应的相当于操作系统的用户空间（user space）中的用户缓冲区（user buffer）。
+
+- MappedByteBuffer ：基于内存映射（mmap）
+- FileChannel ：基于 sendfile 
