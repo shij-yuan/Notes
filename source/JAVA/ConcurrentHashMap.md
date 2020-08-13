@@ -1,18 +1,5 @@
 # ConcurrentHashMap
 
-## JDK 1.7
-
-使用 reentrantLock
-
-### put
-
-1. 通过哈希算法计算出当前 key 的 hash 值
-2. 通过这个 hash 值找到它所对应的 Segment 数组的下标
-3. 再通过 hash 值计算出它在对应 Segment 的 HashEntry数组 的下标
-4. 找到合适的位置插入元素
-
-通过tryLock尝试加锁，如果加锁成功，返回null，否则执行 scanAndLockForPut 方法
-
 
 
 ## JDK 1.8
@@ -97,3 +84,17 @@
 - 所有线程都遵循从后向前进行迁移
 - 当前线程迁移时会确定一个范围，限定它此次迁移的数据范围
 
+
+
+## JDK 1.7
+
+使用 reentrantLock
+
+### put
+
+1. 通过哈希算法计算出当前 key 的 hash 值
+2. 通过这个 hash 值找到它所对应的 Segment 数组的下标
+3. 再通过 hash 值计算出它在对应 Segment 的 HashEntry数组 的下标
+4. 找到合适的位置插入元素
+
+通过tryLock尝试加锁，如果加锁成功，返回null，否则执行 scanAndLockForPut 方法
