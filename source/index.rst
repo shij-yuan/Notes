@@ -51,9 +51,8 @@ Welcome to Notes!
    数据库/事务
    数据库/Mysql_锁
    数据库/二阶段提交
-   数据库/三阶段提交
-   数据库/索引
    数据库/innoDB储存
+   数据库/索引
    数据库/Mysql_order_by
    数据库/主从复制
    数据库/优化
@@ -137,9 +136,11 @@ Welcome to Notes!
    :caption: Spring
 
    Spring/Bean
+   Spring/IoC
    Spring/tiny-spring
    Spring/注解
    Spring/事务传播行为
+   Spring/SpringMVC
    Spring/SpringBoot
 
 
@@ -153,14 +154,11 @@ Welcome to Notes!
    redis/redis基础
    redis/redis高可用
    redis/事务
-   redis/过期策略
    redis/分布式锁
    redis/跳跃表
    redis/布隆过滤器
    redis/缓存一致性
    redis/订阅与发布
-
-
 
 
 
@@ -202,3 +200,13 @@ Welcome to Notes!
    项目相关/MQ可靠
    项目相关/秒杀
    项目相关/高并发
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :caption: 算法
+
+   算法/大数据
+   算法/背包
+   算法/手撕代码
+

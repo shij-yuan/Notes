@@ -51,7 +51,7 @@ Feign通过处理注解，将请求模板化，当实际调用的时候，传入
 
 7. 基于 HTTP 发送请求
 
-![](https://upload-images.jianshu.io/upload_images/19816137-512fc8f62746eac7?imageMogr2/auto-orient/strip|imageView2/2/w/756)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ghtnnkgx9yj30l00llacs.jpg)
 
 
 
@@ -61,9 +61,19 @@ Feign通过处理注解，将请求模板化，当实际调用的时候，传入
 
 集成了负载均衡，限流等功能。
 
-- 使用**自定义的 RPC 协议**，更适合小数据高并发场景，性能更好。
+默认的协议采用单一长连接和 NIO 异步通讯，适合于小数据量高并发的服务调用，以及服务消费者机器数远大于服务提供者机器数的情况。不适合传送大数据量的服务。
 
-![](https://crazyfzw.github.io/images/2018061003.png)
+
+
+### 流程
+
+1. 通过`register`将服务提供者的url注册到`Registry`注册中心中。
+2. 客户端`Consumer`从注册中心获取被调用服务端注册信息，如：接口名称，URL地址等信息。
+3. 将获取的url地址返回到`Consumer`客户端，客户端通过获取的URL地址支持`invoke`反射机制获取服务的实现。
+
+
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ghtnnq1m6bj30p00iqqow.jpg)
 
 Dubbo框架设计一共划分了10个层，各层均为单向依赖，右边的黑色箭头代表层之间的依赖关系，每一层都可以剥离上层被复用，其中，Service 和 Config 层为 API，其它各层均为 SPI；最上面的 Service 层是留给实际想要使用 Dubbo 开发分布式服务的开发者实现业务逻辑的接口层；图中左边淡蓝背景的为服务消费方使用的接口，右边淡绿色背景的为服务提供方使用的接口， 位于中轴线上的为双方都用到的接口。
 

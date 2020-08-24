@@ -57,3 +57,20 @@
 ## 自动拆箱
 
 编译器通过调用`xxxValue()`等方法将对象转换成原始类型值
+
+
+
+## 异常
+
+**Throwable** 是所有异常类型的基类，**Throwable** 下一层分为两个分支，**Error** 和 **Exception**。
+
+- Error 描述了 JAVA 程序运行时系统的内部错误，通常比较严重，如虚拟机相关错误：系统崩溃，内存不足，堆栈溢出等，编译器不会对这类错误进行检测，JAVA 应用程序也不应对这类错误进行捕获。
+    - java.lang.OutOfMemoryError
+    - java.lang.StackOverflowError
+- Exception 类型可以在应用程序中进行捕获并处理，下面又分为两个分支
+    - 一个分支派生自 RuntimeException，这种异常通常为程序错误导致的异常。
+        - ndexOutOfBoundsException (数组越界)
+        - NullPointerException (空指针)
+    - 另一个分支为非派生自 RuntimeException 的异常，这种异常通常是程序本身没有问题，由于像 I/O 错误等问题导致的异常
+        - IOException、SQLException
+

@@ -40,7 +40,7 @@
     1. 获取传入的配置工厂类名（`xxxAutoConfiguration`）、类加载器
     2. 通过类加载器获取指定的 spring.factories 文件
     3. 获取文件中工厂类全类名
-    4. 反射得到工厂类 class 对象、构造方法
+    4. 反射实例化为对应的标注了@Configuration的JavaConfig形式的IoC容器配置类，然后汇总为一个并加载到IoC容器，得到工厂类 class 对象、构造方法
     5. 生成工厂类实例
 
 ### 具体步骤
