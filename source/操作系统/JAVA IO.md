@@ -58,9 +58,13 @@ NIO中的所有IO都是从 Channel（通道） 开始的。
 
 ### 读写操作
 
+- 每当写入了一个单位的数据后, position就会递增1
+- 调用了 filp 方法将 Buffer 从写模式转换到读模式时, position 的值会自动被设置为0
+- 每当读取一个单位的数据, position 的值递增1
+
 读写操作都会修改 position 的值，每次读写的位置是当前 position 的下一个位置。通过修改 position，我们可以读取指定位置的数据。
 
-读取刚写完的操作时，需要同时修改 position 和 limit。函数 flip 合二为一；
+读取刚写完的操作时，需要同时修改 position 和 limit。函数 flip 可以合二为一；
 
 
 
