@@ -192,6 +192,7 @@ Welcome to Notes!
    项目相关/OAuth2
    项目相关/Feign
    项目相关/线程池
+   项目相关/异步查询
    项目相关/CompletableFuture
    项目相关/分布式事务
    项目相关/幂等性
