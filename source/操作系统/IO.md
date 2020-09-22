@@ -49,7 +49,7 @@
 
 
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044733.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdpezgzpj30zk0hsjtl.jpg)
 
 
 
@@ -57,11 +57,11 @@
 
 ### IO中断
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044740.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdphew2ij30k00ehn11.jpg)
 
 ### DMA
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044745.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdpk7j7oj30k00bwn0u.jpg)
 
 
 

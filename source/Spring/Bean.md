@@ -22,7 +22,7 @@ Spring IoC容器中只会存在一个**共享的 bean 实例**，并且所有对
 
 ## 生命周期
 
-![](https://blog-pictures.oss-cn-shanghai.aliyuncs.com/bean实例化过程.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdootjx4j30us0cin1m.jpg)
 
 1. 实例化 bean 对象，类似于 new XXObject( )
 2. 将配置文件中配置的属性填充到刚刚创建的 bean 对象中。

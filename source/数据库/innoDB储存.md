@@ -2,7 +2,7 @@
 
 从大到小的结构为：表空间、段、区、页、行。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-05-084330.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdp6956wj30nq0fjwgi.jpg)
 
 
 
@@ -25,11 +25,11 @@
 
 #### 数据页内容
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-05-084333.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdp4rmaoj30no0eemzk.jpg)
 
 #### slot
 
 - 一个 slot 包含多个行记录。每个 slot 占 2 个字节，**记录这个 slot 里的行记录相对页初始位置的偏移量**。
 - 索引只能定位到数据页，而定位到数据页内的行记录还需要在内存中进行**二分查找**，而这个二分查找就需要借助 slot 信息，先找到对应的 slot ，然后在 slot 内部通过数据行中记录头里的下一个记录地址进行遍历。**链表本身是无法进行二分查找**。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-05-084338.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdp9ere1j30l30duwgx.jpg)

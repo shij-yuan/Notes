@@ -111,7 +111,7 @@ net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
 
     - SACK：TCP头里加 SACK
 
-        ![](https://tva1.sinaimg.cn/large/007S8ZIlly1ghaf65czn0j30sg0g1ta5.jpg)
+        ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdq3bk8dj30sg0g175j.jpg)
 
 
 
@@ -173,9 +173,9 @@ net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
 3. 三次握手
 4. TCP分割数据包
 5. 添加TCP头部，生成TCP报文
-    ![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044458.jpg)
+    ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdqfsw8nj30u00p9tao.jpg)
 6. 添加IP头部，生成IP报文
-    ![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044503.jpg)
+    ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdqhepqtj30u0188dj5.jpg)
 7. 生成MAC头部：包括发送方、接收方MAC地址和使用的IP协议 (**MAC地址会变**)
 8. 网卡 ->  交换机 -> 路由器 
 9. 接受消息， 返回报文
@@ -185,4 +185,4 @@ net.ipv4.tcp_fin_timeout 修改系默认的 TIMEOUT 时间
 
 
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044523.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdqmf9amj30q00qhmzh.jpg)

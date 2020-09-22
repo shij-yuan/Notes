@@ -11,7 +11,7 @@ Redis 使用**文件事件处理器**处理网络事件。
 
  I/O 多路复用程序将所有产生事件的套接字都入队到一个队列，当上一个套接字产生的事件被处理完毕之后（该套接字为事件所关联的事件处理器执行完毕）， I/O 多路复用程序才会继续向文件事件分派器传送下一个套接字。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-065104.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdppikwfj31e30u0n5g.jpg)
 
 
 

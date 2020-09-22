@@ -92,7 +92,7 @@
 
 公钥不需安全性，对称密钥都是临时生成且随机的。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044235.png)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdovc3gqj31ey0u0tav.jpg)
 
 
 
@@ -135,7 +135,7 @@ HTTP 1.x在应用层以纯文本的形式进行通信，而HTTP 2.0将所有的�
 
 HTTP 2.0建立一条TCP连接后，并行传输着3个数据流，客户端向服务端乱序发送stream1~3的一系列的DATA帧，与此同时，服务端已经在返回stream 1的DATA帧 
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-044318.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdoyzcj9j30ho05rt8w.jpg)
 
 *头部压缩* ： HTTP/2 会**压缩头**（Header）如果你同时发出多个请求，他们的头是一样的或是相似的，那么，协议会帮你**消除重复的分**。
 

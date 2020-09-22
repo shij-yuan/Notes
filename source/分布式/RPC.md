@@ -19,7 +19,7 @@ RPC（Remote Procedure Call）—远程过程调用，它是一种通过网络�
 - 客户端存根(Client Stub)接收到消息，并进行反序列化。
 - 客户端得到最终结果。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-06-045334.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdpudef2j30i30c274o.jpg)
 
 
 

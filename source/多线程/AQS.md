@@ -9,7 +9,7 @@
 *   **条件队列**是为Lock实现的一个基础同步器，并且一个线程可能会有多个条件队列，只有在使用了Condition才会存在条件队列。
 *   **同步队列**的作用是，在线程获取资源失败后，进入同步队列队尾保持自旋等待状态， 在同步队列中的线程在自旋时会判断其前节点是否为head节点，如果为head节点则不断尝试获取资源/锁，获取成功则退出同步队列。当线程执行完逻辑后，会释放资源/锁，释放后唤醒其后继节点。
 
-![](http://emall-t.oss-cn-hangzhou.aliyuncs.com/blog/2020-07-07-113552.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdoe7qifj30je07y3yr.jpg)
 
 ### 两种资源共享方式
 
@@ -63,7 +63,7 @@ AQS中的ConditionObject内部类实现了Condition接口，配合锁对象使�
 ConditionObject是通过基于单链表的条件队列来管理等待线程的。线程在调用await方法进行等待时，会释放同步状态。同时线程将会被封装到一个等待节点中，并将节点置入条件队列尾部进行等待。当有线程在获取独占锁的情况下调用signal或singalAll方法时，队列中的等待线程将会被唤醒，重新竞争锁。
 
 
-![](https://blog-pictures.oss-cn-shanghai.aliyuncs.com/15254103608166.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gizdoisfwvj31820o40w6.jpg)
 
 ### await
 
