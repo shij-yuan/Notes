@@ -59,3 +59,10 @@ getSingleton()过程：Spring首先从一级缓存singletonObjects中获取。�
 3. B在初始化第一步的时候发现自己依赖了对象A，于是尝试get(A)，尝试一级缓存singletonObjects(没有，A还没初始化完全)，尝试二级缓存earlySingletonObjects（没有），尝试三级缓存singletonFactories，由于A通过ObjectFactory将自己提前曝光了，所以B能够通过ObjectFactory.getObject 拿到A对象，B拿到A对象后顺利完成了初始化阶段，完全初始化之后将自己放入到一级缓存singletonObjects中。
 4. A此时能拿到B的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects 中
 5. B 获得 A 的引用，也完成初始化
+
+
+
+## BeanFactory 与 FactoryBean
+
+- BeanFactory是个Factory，也就是IOC容器或对象工厂；所有的Bean都是由BeanFactory(也就是IOC容器)来进行管理的。**工厂模式**
+- FactoryBean是个Bean，是能生产或者修饰对象生成的工厂Bean。**装饰器模式**
